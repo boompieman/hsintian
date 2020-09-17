@@ -1,0 +1,13 @@
+flask
+django
+uwsgi
+line-bot-sdk
+APScheduler
+pytz
+apiclient
+google-api-python-client
+google_auth_oauthlib
+django-cors-headers
+django-model-utils
+Pillow
+redis

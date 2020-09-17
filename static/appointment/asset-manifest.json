@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "./static/css/main.98e4ba82.chunk.css",
+    "main.js": "./static/js/main.f400d64d.chunk.js",
+    "main.js.map": "./static/js/main.f400d64d.chunk.js.map",
+    "runtime~main.js": "./static/js/runtime~main.65aa24f7.js",
+    "runtime~main.js.map": "./static/js/runtime~main.65aa24f7.js.map",
+    "static/css/2.aa69e8d3.chunk.css": "./static/css/2.aa69e8d3.chunk.css",
+    "static/js/2.9c4149c5.chunk.js": "./static/js/2.9c4149c5.chunk.js",
+    "static/js/2.9c4149c5.chunk.js.map": "./static/js/2.9c4149c5.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.a1054e34ec6511a862ba8e4c406d2880.js": "./precache-manifest.a1054e34ec6511a862ba8e4c406d2880.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.aa69e8d3.chunk.css.map": "./static/css/2.aa69e8d3.chunk.css.map",
+    "static/css/main.98e4ba82.chunk.css.map": "./static/css/main.98e4ba82.chunk.css.map",
+    "static/media/selectMaster.png": "./static/media/selectMaster.f70d7237.png",
+    "static/media/slick-theme.css": "./static/media/slick.f97e3bbf.svg"
+  }
+}

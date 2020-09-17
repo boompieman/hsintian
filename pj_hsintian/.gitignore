@@ -1,0 +1,31 @@
+# 註解，會被忽略。
+# 不要追蹤檔名為 .pyc 結尾的檔案
+*.pyc
+*.vscode
+*.code-workspace
+db.sqlite3
+dbback.sqlite3.backup0903
+
+Django_test/__pycache__/
+test_app/__pycache__/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+
+# 忽略doc/notes.txt但不包含doc/server/arch.txt
+#doc/*.txt
+# ignore all .txt files in the doc/ directory
+#doc/**/*.txt
+
+sources
+Untitled.ipynb
+client_secret.json
+test_app/.ipynb_checkpoints/
+test_app/token.pkl
+test_app/Untitled.ipynb
+token.pickle
