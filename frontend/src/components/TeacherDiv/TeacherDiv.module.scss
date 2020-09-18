@@ -1,0 +1,42 @@
+.TeacherDiv {
+    display: grid;
+    grid-template-columns: minmax(100px, 20%) 1fr;
+    height: 150px;
+    border-top: 1px solid #ccc;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.TeacherImg {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 100%;
+    margin: auto auto auto auto;
+}
+
+.TeacherInfo {
+    width: 100%;
+    overflow-x: hidden;
+    margin: auto 0 auto 0;
+}
+
+.TeacherIntroContent {
+    line-height: 20px;
+    font-size: 15px;
+    white-space: pre-wrap;
+    margin: 0 10px 0 10px;
+    text-align: left;
+}
+
+.SelectedTeacherInfo {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #ccc;
+     
+    p {
+        margin: 0 10px 0 10px;
+        text-align: center;
+    }
+}

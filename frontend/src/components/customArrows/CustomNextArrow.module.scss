@@ -1,0 +1,25 @@
+.GridBox {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+
+    display: grid;
+    grid-template-rows: auto 22px auto;
+}
+
+.ArrowContainer {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.nextArrow {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-top: 4px solid rgb(233, 44, 42);
+    border-right: 4px solid  rgb(233, 44, 42);
+    transform: rotate(45deg);
+    box-sizing: border-box;
+    position: relative;
+    top: 4px;
+}

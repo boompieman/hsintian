@@ -1,0 +1,73 @@
+.timeSelectLayout {
+    display: grid;
+    grid-template-rows: 60px 60px 70px auto;
+    grid-template-columns: auto;
+    text-align: center;
+
+    h2 {
+        display: inline-block;
+    }
+}
+
+#timeSelectTitle {
+    margin: 0;
+    position: relative;
+    top: 25.5px;
+    line-height: 24px;
+}
+
+#spaceDiv {
+    display: inline-block;
+    margin: 0 auto 0 auto;
+    top: 20px;
+    width: 73.14px;
+    height: 35px;
+}
+
+.DateSliderContainer {
+    display: grid;
+
+    grid-template-columns: 15px auto 15px;
+}
+
+.YearAndMonthBar {
+    display: grid;
+
+    grid-template-columns: 15px 50px 1fr 2fr 15px;
+    
+}
+
+.YearBar {
+    display: inline-block;
+
+    text-align: left;
+
+    margin: auto 0 auto 0;
+
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.TitleBar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 121.57px 1fr;
+}
+
+.ButtonContainer {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    left: 20px;
+    top: 20px;
+}
+
+.ErrorMessage {
+    z-index: 200;
+    position: fixed;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 15px 10px 15px;
+}
