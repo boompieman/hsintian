@@ -1,0 +1,36 @@
+.Calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 30px);
+    text-align: center;;
+    grid-gap: 12px;
+    width: 282px;
+    margin: auto;
+}
+
+.DayTitle {
+    font-weight: bold;
+}
+
+.DayTitle.Red {
+    color: red;
+}
+
+.Day {
+    color: gray;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+}
+
+.Day.current {
+    border-radius: 50%;
+    border: none;
+    background-color: #b91919;
+    color: white;
+}
+
+.Day.Selectable {
+    color: black;
+    cursor: pointer;
+}

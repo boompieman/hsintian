@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import cities from './cities';
 import ages from './ages';
 import Button from '../../UI/Button/Button';
+import Progression from '../../components/progression/progression'
 
 import classes from './InfoPage.module.scss';
 
@@ -21,12 +23,16 @@ const infoPage = (props) => {
     if( props.city ){
         district_arr = cities[props.city];
         district_options = district_arr.map((district) => (
-            <option key={district}>{district}</option>
+            <option key={district}>
+                {district}
+            </option>
         ))
     };
 
     const ages_options = ages.map((age_range) => (
-        <option key={age_range}>{age_range}</option>
+        <option key={age_range}>
+            {age_range}
+        </option>
     ))
 
     const onChangeHandler = (e, type) => {
@@ -56,7 +62,8 @@ const infoPage = (props) => {
                 src={welcome_pic}
                 src='https://hsintian.tk/static/media/welcome.d4ee6e82.png' 
                 />
-            <h2>請輸入您的姓名</h2>
+            <Progression currentStep={1} />
+            {/* <h2>請輸入個人資訊</h2> */}
             <form className={classes.InfoForm}>
                 <div className={classes.infoTitle}>
                     <label>
@@ -159,7 +166,8 @@ const infoPage = (props) => {
                         }}
                         backgroundColor="#CC0000"
                         color="white"
-                        border="none">        
+                        border="none"
+                        width="80%">        
                         下一步
                     </Button>
                 </div>
@@ -169,4 +177,4 @@ const infoPage = (props) => {
     )
 }
 
-export default infoPage;
+export default connect()(infoPage);

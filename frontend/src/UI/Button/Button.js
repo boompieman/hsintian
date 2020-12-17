@@ -10,7 +10,8 @@ const button = (props) => {
             style={{
                 "backgroundColor": props.backgroundColor,
                 "color": props.color,
-                "border": props.border
+                "border": props.border,
+                "width": props.width
             }}> 
             {props.children}
         </button>

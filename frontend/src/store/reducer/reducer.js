@@ -12,13 +12,17 @@ const initialState = {
     masterId: '',   
     masterGid: null,
     masterName: '',
-    step: 'info_page',
+    step: 'teacher_select',
     selectedDate_timeList: null,
     datetime_string: null,
     isFetchingTime: false,
     line_id: null,
     line_data_status: null,
-    errMsg: null
+    errMsg: null,
+
+
+
+    selectedDate: new Date()
 }
 
 const reducer = ( state = initialState , action ) => {

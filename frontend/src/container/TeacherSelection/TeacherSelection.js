@@ -5,6 +5,7 @@ import Loading from '../../UI/Loading/Loading';
 import Button from '../../UI/Button/Button';
 import Spinner from '../../UI/Spinner/spinner';
 import Aux from '../../hoc/aux';
+import Progression from '../../components/progression/progression'
 
 import classes from './TeacherSelection.module.scss';
 import selectMasterPic from "../../selectMaster.png";
@@ -22,11 +23,11 @@ class teachderSelection extends Component {
     }
 
     componentDidMount(){
-        this.setState({ isLoading: true });
+        // this.setState({ isLoading: true });
         fetch('https://hsintian.tk/api/group/get/ ', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json; charset=UTF-8'
             }
         })
         .then(res => res.json())
@@ -98,6 +99,7 @@ class teachderSelection extends Component {
                     src='https://hsintian.tk/static/media/selectMaster.09b4ec19.jpg' 
                     // src={selectMasterPic}
                 />
+                <Progression currentStep={2}/>
                 { this.state.picLoaded ? 
                     pageContent: null }
             </div>

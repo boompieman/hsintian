@@ -1,0 +1,19 @@
+.MonthSelector {
+    display: grid;
+    width: 282px;
+    grid-template-columns: 25px auto 25px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.MonthDisplay {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.Arrow {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}

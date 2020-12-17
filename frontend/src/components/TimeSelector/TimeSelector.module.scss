@@ -1,0 +1,28 @@
+h3 {
+    width: 282px;
+    text-align: center;
+    margin: 15px auto 15px auto;
+    background-color: #b91919;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.SelectionsContainer {
+    width: 282px;
+    margin: auto;
+    height: 200px;
+    overflow: scroll;
+}
+
+.SelectionDiv {
+    border: 1px solid #b91919;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 10px auto 10px auto;
+    box-shadow: 0px 3px 6px -1px rgba(0,0,0,0.5);
+    cursor: pointer;
+    width: 95%;
+}
