@@ -1,12 +1,8 @@
 .ldsSpinner {
     display: inline-block;
-    position: fixed;
     width: 64px;
     height: 64px;
     z-index: 500;
-    background-color: white;
-    right: calc((100% - 64px)/2);
-    bottom: calc((100% - 64px)/2);
   }
 
   .ldsSpinner div {
@@ -22,7 +18,7 @@
     width: 5px;
     height: 14px;
     border-radius: 20%;
-    background: blue;
+    background: #b91919;
   }
   .ldsSpinner div:nth-child(1) {
     transform: rotate(0deg);

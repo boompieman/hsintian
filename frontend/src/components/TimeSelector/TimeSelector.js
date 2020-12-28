@@ -1,45 +1,41 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../store/action/actions'
 //style
 import classes from './TimeSelector.module.scss'
 
 function TimeSelector(props) {
-    const selectedTime = "time string"
-    const selectedMaster = props.selectedMaster
-    const selectMaster = props.selectMaster
+    const {selectedMaster, selectMaster, selectedDateTimeList} = props
 
-    const timeList = props.selectedDateTimeList
-
-    const selectTime = (event, datetimeString) => {
+    const selectTime = (event, masterId, datetimeString) => {
         event.stopPropagation()
         console.log(datetimeString)
-        props.setDateTimeString(datetimeString)
+        props.setMasterDatetimeString(masterId, datetimeString)
     }
 
     let masterSelection
-    if (timeList !== null && !timeList.length) {
+    if (selectedDateTimeList !== null && !selectedDateTimeList.length) {
         masterSelection = (
             <div className={classes.NoTime}>
                 本日無可預約時段
             </div>
         )
-    } else if (timeList && timeList.length) {
+    } else if (selectedDateTimeList && selectedDateTimeList.length) {
         let masterTimeList
         if (selectedMaster) {
-            masterTimeList = selectedMaster.timeList.map(time => {
+            masterTimeList = selectedMaster.selectedDateTimeList.map(time => {
                 const content = time.slice(11, 16)
                 return (
                     <div 
                         key={time}
                         className={classes.TimeBlock}
-                        onClick={(e) => selectTime(e, time)}>
+                        onClick={(e) => selectTime(e, props.masterId, time)}>
                         {content}
                     </div>
                 )
             })
 
-            masterSelection = timeList.map(master => {
+            masterSelection = selectedDateTimeList.map(master => {
                 if (selectedMaster.masterId === master.masterId){
                     return (
                         <div 
@@ -68,7 +64,7 @@ function TimeSelector(props) {
                 }
             })
         } else {
-            masterSelection = timeList.map(master => (
+            masterSelection = selectedDateTimeList.map(master => (
                 <div 
                     key={master.masterId}
                     className={classes.MasterBox}
@@ -99,7 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setDateTimeString: (datetimgString) => dispatch(actions.setDateTimeString(datetimgString))
+        setDateTimeString: (datetimgString) => dispatch(actions.setDateTimeString(datetimgString)),
+        setMasterDatetimeString: (masterId, selectedDatetimeString) => dispatch(actions.setMasterDatetimeString(masterId, selectedDatetimeString))
     }
 }
 

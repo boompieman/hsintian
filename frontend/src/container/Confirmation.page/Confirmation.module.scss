@@ -1,0 +1,60 @@
+.ButtonContainer {
+    position: absolute;
+    display: inline-block;
+    z-index: 100;
+    left: 20px;
+    top: 20px;
+}
+
+.InfoContainer {
+    width: 220px;
+    padding: 20px;
+    background-color: #b91919;
+    color: white;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 85px auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    position: relative;
+    top: 20px;
+}
+
+.SpinnerContainer {
+    height: calc(100vh - 64px - 56.5vw);
+    position: relative;
+    min-height: 280px;
+}
+
+.Loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    text-align: center;
+}
+
+.InfoRow {
+    margin: 10px 0 10px 0;
+}
+
+.Buttons {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+    margin: 10px;
+}
+
+
+h4 {
+    color: #b91919;
+    margin: 5px;
+}
+
+button {
+    margin: 0 10px 0 10px;
+    font-size: 0.9em;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid white;
+    cursor: pointer;
+}

@@ -10,7 +10,7 @@ import Progression from '../../components/progression/progression'
 
 import classes from './TeacherSelection.module.scss';
 import selectMasterPic from "../../selectMaster.png";
-//
+//utils
 import { getData } from '../../controllers/fetchData'
 
 class teachderSelection extends Component {

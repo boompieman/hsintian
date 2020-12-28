@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 
 import InfoPage from './container/InfoPage/InfoPage';
 import TeacherSelection from './container/TeacherSelection/TeacherSelection';
-import SelectTimePage from './container/SelectTimePage/SelectTimePage'
+import SelectTime from './container/SelectTime.page/SelectTime.page'
+import Confirmation from './container/Confirmation.page/Cofirmation.page'
 
 import * as actions from './store/action/actions';
-
-import convertToString from './container/SimpleSlider/convert_dateObject_to_dateString';
 
 const liff = window.liff;
 
@@ -26,72 +25,72 @@ class App extends Component {
         // this.initializeLIFF();
     }
 
-    makeReservation = (master_id, time) => {
-        this.setState({ isPending: true })
-        const datetime_string = convertToString(this.props.datetime_string) + time;
-        const saved_data = {
-            master_id: master_id,
-            dt: datetime_string,
-            line_id: this.props.line_id,
-            name: this.props.chineseName,
-            phone: this.props.phoneNumber,
-            introducer: this.props.introducer,
-            gender: this.props.gender,
-            age: this.props.age,
-            city: this.props.city,
-            district: this.props.district
-        };
+    // makeReservation = (master_id, time) => {
+    //     this.setState({ isPending: true })
+    //     const datetime_string = convertToString(this.props.datetime_string) + time;
+    //     const saved_data = {
+    //         master_id: master_id,
+    //         dt: datetime_string,
+    //         line_id: this.props.line_id,
+    //         name: this.props.chineseName,
+    //         phone: this.props.phoneNumber,
+    //         introducer: this.props.introducer,
+    //         gender: this.props.gender,
+    //         age: this.props.age,
+    //         city: this.props.city,
+    //         district: this.props.district
+    //     };
 
-        const reservation_data = new FormData();
-        for ( let ele in saved_data){
-            reservation_data.append(ele, saved_data[ele]);
-        };
+    //     const reservation_data = new FormData();
+    //     for ( let ele in saved_data){
+    //         reservation_data.append(ele, saved_data[ele]);
+    //     };
 
-        fetch('https://hsintian.tk/api/reservation/post', {
-            method: 'POST',
-            body: reservation_data
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status ==='success'){
-                const reservation_post_datetime = (
-                    data.info.datetime.slice(0, 4) + '/' +
-                    data.info.datetime.slice(4, 6) + '/' +
-                    data.info.datetime.slice(6, 8) + ' ' + 
-                    data.info.datetime.slice(8, 10) + ':' +
-                    data.info.datetime.slice(10, 12)
-                );
+    //     fetch('https://hsintian.tk/api/reservation/post', {
+    //         method: 'POST',
+    //         body: reservation_data
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if (data.status ==='success'){
+    //             const reservation_post_datetime = (
+    //                 data.info.datetime.slice(0, 4) + '/' +
+    //                 data.info.datetime.slice(4, 6) + '/' +
+    //                 data.info.datetime.slice(6, 8) + ' ' + 
+    //                 data.info.datetime.slice(8, 10) + ':' +
+    //                 data.info.datetime.slice(10, 12)
+    //             );
 
-                const reservationObj = {
-                    line_id: data.info.line_id,
-                    reservation_id: data.info.reservation_id,
-                    name: data.info.name,
-                    datetime: reservation_post_datetime,
-                    master: this.props.masterName
-                }
+    //             const reservationObj = {
+    //                 line_id: data.info.line_id,
+    //                 reservation_id: data.info.reservation_id,
+    //                 name: data.info.name,
+    //                 datetime: reservation_post_datetime,
+    //                 master: this.props.masterName
+    //             }
 
-                const reservationFormData = new FormData();
-                for ( let ele in reservationObj){
-                    reservationFormData.append(ele, reservationObj[ele]);
-                };
+    //             const reservationFormData = new FormData();
+    //             for ( let ele in reservationObj){
+    //                 reservationFormData.append(ele, reservationObj[ele]);
+    //             };
 
-                return fetch('https://hsintian.tk/api/send_reservation/post', {
-                    method: 'POST',
-                    body: reservationFormData
-                })
-                .then(data => liff.closeWindow())
-                .catch(err => {
-                    this.props.setErrorMsg(`${err}`)
-                })
-            } else {
-                this.setState({
-                    error: data.error_message,
-                    isPending: false
-                })
-            }
-        })
-        .catch(err => console.log(err))
-    }
+    //             return fetch('https://hsintian.tk/api/send_reservation/post', {
+    //                 method: 'POST',
+    //                 body: reservationFormData
+    //             })
+    //             .then(data => liff.closeWindow())
+    //             .catch(err => {
+    //                 this.props.setErrorMsg(`${err}`)
+    //             })
+    //         } else {
+    //             this.setState({
+    //                 error: data.error_message,
+    //                 isPending: false
+    //             })
+    //         }
+    //     })
+    //     .catch(err => console.log(err))
+    // }
 
     backdropHandler = () => {
         this.setState({
@@ -138,11 +137,6 @@ class App extends Component {
     }
 
     render(){
-        // return (
-        //     <div className={classes.App}>
-        //         <SelectTimePage />
-        //     </div>
-        // )
         if (this.props.step === 'info_page'){
             return (
                 <div className={classes.App}>
@@ -179,11 +173,19 @@ class App extends Component {
             } else {
                 return (
                     <div className={classes.App}>
-                        <SelectTimePage />
+                        <SelectTime />
                     </div>
                 )
             }
-        } else if (this.props.step === 'finished'){
+        } else if (this.props.step === 'confirmation') {
+            return (
+                <div className={classes.App}>
+                    <Confirmation />
+                </div>
+            )
+        }
+        
+        else if (this.props.step === 'finished'){
             return (
                 <div className={classes.App}>
                     <p>{this.props.errMsg}</p>

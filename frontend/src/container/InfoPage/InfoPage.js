@@ -63,7 +63,6 @@ const infoPage = (props) => {
                 src='https://hsintian.tk/static/media/welcome.d4ee6e82.png' 
                 />
             <Progression currentStep={1} />
-            {/* <h2>請輸入個人資訊</h2> */}
             <form className={classes.InfoForm}>
                 <div className={classes.infoTitle}>
                     <label>

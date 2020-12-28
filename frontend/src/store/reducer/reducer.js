@@ -12,7 +12,7 @@ const initialState = {
     masterId: null,   
     masterGid: null,
     masterName: '',
-    step: 'teacher_select',
+    step: 'confirmation',
     selectedDate_timeList: null,
     datetime_string: null,
     isFetchingTime: false,
@@ -105,12 +105,17 @@ const reducer = ( state = initialState , action ) => {
                     teacherName: ''
                 }
             } else if (state.step === 'time_select'){
+                console.log("move to teacher select")
                 return {
                     ...state,
                     step: 'teacher_select',
-                    classTime: '',
-                    selectedDate_timeList: null,
-                    datetime_string: null,
+                    masterGid: null,
+                    selectedDate: null
+                }
+            } else if (state.step === 'confirmation') {
+                return {
+                    ...state,
+                    step: 'time_select'
                 }
             } else {
                 return state;
@@ -122,7 +127,7 @@ const reducer = ( state = initialState , action ) => {
                 ...state,
                 year: action.year,
                 month: action.month,
-                date: action.date
+                date: action.date,
             }
         break;
 
@@ -155,6 +160,14 @@ const reducer = ( state = initialState , action ) => {
             return {
                 ...state,
                 selectedDate: action.selectedDate
+            }
+            break
+
+        case actionTypes.SET_MASTER_DATETIME_STRING:
+            return {
+                ...state,
+                masterId: action.masterId,
+                selectedDatetimeString: action.selectedDatetimeString
             }
             break
 

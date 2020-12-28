@@ -7,6 +7,7 @@ import classes from './SelectTimePage.module.scss'
 import Progression from '../../components/progression/progression'
 import Calendar from '../../components/Calendar/Calendar'
 import TimeSelector from '../../components/TimeSelector/TimeSelector'
+import Button from '../../UI/Button/Button'
 //img
 import rightArrow from './right-arrow.png'
 import leftArrow from './left-arrow.png'
@@ -25,13 +26,6 @@ function SelectTimepage(props) {
         console.log(props.masterId)
         getData(`/groups/${props.masterGid}/freetime`)
         .then(data => {
-            console.log(data)
-            const masterGid = props.masterGid
-            let cachedData = {
-                dateString: "",
-                index: -1
-            }
-            let dateList = []
             setTimeList(data)
         })
         .catch(error => console.log(error))
@@ -40,12 +34,10 @@ function SelectTimepage(props) {
     useEffect(() => {
         if (props.selectedDate) {
             let timeArray = []
-
             for (let master in  timeList) {
                 const matchedTime = timeList[master].freetime.filter(time => {
                     return time.includes(props.selectedDate)
                 })
-                console.log(matchedTime)
                 if (matchedTime.length) {
                     timeArray.push({
                         name: timeList[master].name,
@@ -54,7 +46,6 @@ function SelectTimepage(props) {
                     })
                 }
             }
-            
             return setSelectedDateTimeList(timeArray)
         } else {
             setSelectedDateTimeList(null)
@@ -67,7 +58,6 @@ function SelectTimepage(props) {
             props.setSelectedDate(null)
             return setSelectedMaster(null)
         } else {
-            console.log(selectedDateString)
             let timeArray = []
 
             for (let master in  timeList) {
@@ -83,7 +73,6 @@ function SelectTimepage(props) {
                     })
                 }
             }
-            console.log(timeArray)
             setSelectedMaster(null)
             return props.setSelectedDate(selectedDateString)
         }
@@ -93,7 +82,6 @@ function SelectTimepage(props) {
         const currentYear = selectedMonth.getFullYear()
         const nextMonth = selectedMonth.getMonth() + 1
         const nextMonthDate = new Date(currentYear, nextMonth, 1)
-        console.log(selectedMonth, nextMonthDate)
         setSelectedMonth(nextMonthDate)
     }
 
@@ -114,7 +102,6 @@ function SelectTimepage(props) {
 
     const selectMaster = (masterId) => {
         const matchedMaster = selectedDateTimeList.find(master => master.masterId === masterId)
-        console.log(matchedMaster)
         if (selectedMaster) {
             if (matchedMaster.masterId === selectedMaster.masterId) {
                 return setSelectedMaster(null)
@@ -126,6 +113,16 @@ function SelectTimepage(props) {
     return (
         <div className={classes.SelectTimePage}>
             <img src={selecTimePNG} alt="選擇時間"/>
+            <div className={classes.ButtonContainer}>
+                <Button
+                    className={classes.PrevStepButton}
+                    onClickHandler={props.prevStep}
+                    color="white"
+                    border="1px solid white"
+                    backgroundColor="#CC0000">
+                    上一步
+                </Button>
+            </div>
             <Progression currentStep={3}/>
             <div className={classes.MonthSelector}>
                 <div>
@@ -163,7 +160,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setSelectedDate: (selectedDate) => dispatch(actions.setSelectedDate(selectedDate))
+        setSelectedDate: (selectedDate) => dispatch(actions.setSelectedDate(selectedDate)),
+        prevStep: () => dispatch(actions.prevStep())
     }
 }
 

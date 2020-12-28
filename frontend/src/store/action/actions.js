@@ -81,3 +81,11 @@ export const setSelectedDate = (selectedDate) => {
         selectedDate: selectedDate
     }
 }
+
+export const setMasterDatetimeString = (masterId, selectedDatetimeString) => {
+    return {
+        type: actionTypes.SET_MASTER_DATETIME_STRING,
+        masterId,
+        selectedDatetimeString
+    }
+}

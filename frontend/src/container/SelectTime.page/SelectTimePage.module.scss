@@ -21,3 +21,11 @@ img {
     height: 25px;
     cursor: pointer;
 }
+
+.ButtonContainer {
+    position: absolute;
+    display: inline-block;
+    z-index: 100;
+    left: 20px;
+    top: 20px;
+}
