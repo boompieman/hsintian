@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import InfoPage from './container/InfoPage/InfoPage';
 import TeacherSelection from './container/TeacherSelection/TeacherSelection';
-import TimeSelectLayout from './Layout/TimeSelectLayout';
 import SelectTimePage from './container/SelectTimePage/SelectTimePage'
 
 import * as actions from './store/action/actions';
@@ -139,70 +138,58 @@ class App extends Component {
     }
 
     render(){
-        return (
-            <div className={classes.App}>
-                <SelectTimePage />
-            </div>
-        )
-        // if (this.props.step === 'info_page'){
-        //     return (
-        //         <div className={classes.App}>
-        //             <InfoPage 
-        //                 onChangeHandler={this.props.onChangeHandler}
-        //                 dropDownSelectHandler={this.props.dropDownSelectHandler}
-        //                 chineseName={this.props.chineseName}
-        //                 phoneNumber={this.props.phoneNumber}
-        //                 city={this.props.city}
-        //                 district={this.props.district}
-        //                 gender={this.props.gender}
-        //                 age={this.props.age}
-        //                 nextStep={this.props.nextStep}
-        //                 unfilled_blanks={this.props.unfilled_blanks}/>ˋ
-        //         </div>
-        //     );
-        // } else if (this.props.step === 'teacher_select'){
-        //     return (
-        //         <div className={classes.App}>
-        //             <TeacherSelection
-        //                 masterGid={this.props.masterGid}
-        //                 onSelectMasterGroup={this.props.onSelectMasterGroup}
-        //                 nextStep={this.props.nextStep}
-        //                 prevStep={this.props.prevStep}/>
-        //         </div>
-        //     )
-        // } else if (this.props.step === 'time_select'){
-        //     if (this.props.errMsg !== null){
-        //         return (
-        //             <div className={classes.App}>
-        //                 <p>{this.props.errMsg}</p>
-        //             </div>
-        //         )
-        //     } else {
-        //         return (
-        //             <div className={classes.App}>
-        //                 <TimeSelectLayout
-        //                     isPending={this.state.isPending}
-        //                     error={this.state.error}
-        //                     backdropHandler={this.backdropHandler.bind(this)}
-        //                     isFetchingTime={this.props.isFetchingTime}
-        //                     prevStep={this.props.prevStep}
-        //                     masterGid={this.props.masterGid}
-        //                     datetime_string={this.props.datetime_string}
-        //                     setDateTimeString={this.props.setDateTimeString}
-        //                     selectedDate_timeList={this.props.selectedDate_timeList}
-        //                     setSelectedDate_timeList={this.props.setSelectedDate_timeList}
-        //                     makeReservation={this.makeReservation}
-        //                     fetchTime={this.props.fetchTime}/>
-        //             </div>
-        //         )
-        //     }
-        // } else if (this.props.step === 'finished'){
-        //     return (
-        //         <div className={classes.App}>
-        //             <p>{this.props.errMsg}</p>
-        //         </div>
-        //     )
-        // }
+        // return (
+        //     <div className={classes.App}>
+        //         <SelectTimePage />
+        //     </div>
+        // )
+        if (this.props.step === 'info_page'){
+            return (
+                <div className={classes.App}>
+                    <InfoPage 
+                        onChangeHandler={this.props.onChangeHandler}
+                        dropDownSelectHandler={this.props.dropDownSelectHandler}
+                        chineseName={this.props.chineseName}
+                        phoneNumber={this.props.phoneNumber}
+                        city={this.props.city}
+                        district={this.props.district}
+                        gender={this.props.gender}
+                        age={this.props.age}
+                        nextStep={this.props.nextStep}
+                        unfilled_blanks={this.props.unfilled_blanks}/>ˋ
+                </div>
+            );
+        } else if (this.props.step === 'teacher_select'){
+            return (
+                <div className={classes.App}>
+                    <TeacherSelection
+                        masterGid={this.props.masterGid}
+                        onSelectMasterGroup={this.props.onSelectMasterGroup}
+                        nextStep={this.props.nextStep}
+                        prevStep={this.props.prevStep}/>
+                </div>
+            )
+        } else if (this.props.step === 'time_select'){
+            if (this.props.errMsg !== null){
+                return (
+                    <div className={classes.App}>
+                        <p>{this.props.errMsg}</p>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className={classes.App}>
+                        <SelectTimePage />
+                    </div>
+                )
+            }
+        } else if (this.props.step === 'finished'){
+            return (
+                <div className={classes.App}>
+                    <p>{this.props.errMsg}</p>
+                </div>
+            )
+        }
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 }
 

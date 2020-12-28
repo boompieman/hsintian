@@ -9,7 +9,7 @@ const initialState = {
     gender: '',
     district: '',
     unfilled_blanks: [],
-    masterId: '',   
+    masterId: null,   
     masterGid: null,
     masterName: '',
     step: 'teacher_select',
@@ -19,10 +19,7 @@ const initialState = {
     line_id: null,
     line_data_status: null,
     errMsg: null,
-
-
-
-    selectedDate: new Date()
+    selectedDate: null
 }
 
 const reducer = ( state = initialState , action ) => {
@@ -60,10 +57,10 @@ const reducer = ( state = initialState , action ) => {
             }
 
         case actionTypes.SELECT_MASTER_GROUP:
+            console.log(action.masterGid)
             return {
                 ...state,
                 masterGid: action.masterGid,
-                masterName: action.masterName,
                 step: 'time_select'
             }
         break;
@@ -152,6 +149,14 @@ const reducer = ( state = initialState , action ) => {
                 ...state,
                 isFetchingTime: action.isFetching
             }
+        
+        //latest
+        case actionTypes.SET_SELECTED_DATE:
+            return {
+                ...state,
+                selectedDate: action.selectedDate
+            }
+            break
 
         default:
             return state;

@@ -159,6 +159,9 @@ const infoPage = (props) => {
                     </select>
                 </div>
                 <div className={classes.ButtonContainer}>
+                    <div className={classes.register}>
+                        <u>點擊註冊會員</u>
+                    </div>
                     <Button
                         onClickHandler={(e) => {
                             e.preventDefault();
@@ -167,8 +170,9 @@ const infoPage = (props) => {
                         backgroundColor="#CC0000"
                         color="white"
                         border="none"
-                        width="80%">        
-                        下一步
+                        width="80%"
+                        fontSize="0.9em">        
+                        直接預約
                     </Button>
                 </div>
             </form>

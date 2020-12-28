@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 
 import classes from './TeacherDiv.module.scss';
 
@@ -34,7 +35,7 @@ const teacherDiv = (props) => {
                 return;
         }
         return (
-            <li>{intro_words}</li>
+            <li key={index}>{intro_words}</li>
         )
     });
 
@@ -45,7 +46,6 @@ const teacherDiv = (props) => {
             <img className={classes.TeacherImg} src={'https://hsintian.tk/static/images/' + props.imgSrc} alt={`${props.imgSrc}`}/>
             <div className={classes.TeacherInfo}>
                 <ul className={classes.TeacherIntroContent} style={{"listStyleType": "none"}}>
-                    {/* {props.teacherIntro} */}
                     {intro_li}
                 </ul>
             </div>

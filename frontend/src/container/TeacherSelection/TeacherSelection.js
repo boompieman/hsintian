@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import hsintian_url from '../../hsintian_url'
 
 import TeacherDiv from '../../components/TeacherDiv/TeacherDiv';
 import Loading from '../../UI/Loading/Loading';
@@ -9,7 +10,8 @@ import Progression from '../../components/progression/progression'
 
 import classes from './TeacherSelection.module.scss';
 import selectMasterPic from "../../selectMaster.png";
-import { encode } from 'punycode';
+//
+import { getData } from '../../controllers/fetchData'
 
 class teachderSelection extends Component {
     constructor(props){
@@ -23,22 +25,16 @@ class teachderSelection extends Component {
     }
 
     componentDidMount(){
-        // this.setState({ isLoading: true });
-        fetch('https://hsintian.tk/api/group/get/ ', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json; charset=UTF-8'
-            }
-        })
-        .then(res => res.json())
+        this.setState({ isLoading: true });
+        getData('/groups/')
         .then(data => {
-
+            console.log(data)
             this.setState({
-                teachersList: data.infos,
+                teachersList: data,
                 isLoading: false
             })
         })
-        .catch(err => console.log(err));
+        .catch(error => console.log(error))
     };
 
     onLoadHandler = () => {
@@ -60,7 +56,7 @@ class teachderSelection extends Component {
             this.state.teachersList.forEach((masterGrp, index) => {
                 teacherDivs.push(
                     <TeacherDiv
-                        key={masterGrp.group}
+                        key={masterGrp.gid}
                         imgSrc={masterGrp.image}
                         groupName={masterGrp.group}
                         masterGid={masterGrp.id}
@@ -75,17 +71,21 @@ class teachderSelection extends Component {
             <Aux>
                 <div className={classes.ButtonContainer}>
                     <Button
-                            className={classes.PrevStepButton}
-                            onClickHandler={this.props.prevStep}
-                            color="white"
-                            border="1px solid white"
-                            backgroundColor="#CC0000">
-                            上一步
+                        className={classes.PrevStepButton}
+                        onClickHandler={this.props.prevStep}
+                        color="white"
+                        border="1px solid white"
+                        backgroundColor="#CC0000">
+                        上一步
                     </Button>
                 </div>
+                <Progression currentStep={2}/>
                 {this.state.isLoading?
                     <Loading />:
-                    teacherDivs
+                    <div className={classes.TeacherDivsContainer}>
+                        {teacherDivs}
+                    </div>
+
                 }
             </Aux>
         )
@@ -99,7 +99,7 @@ class teachderSelection extends Component {
                     src='https://hsintian.tk/static/media/selectMaster.09b4ec19.jpg' 
                     // src={selectMasterPic}
                 />
-                <Progression currentStep={2}/>
+
                 { this.state.picLoaded ? 
                     pageContent: null }
             </div>

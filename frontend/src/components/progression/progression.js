@@ -10,30 +10,29 @@ function progression(props) {
         "選擇時間",
         "完成預約"
     ]
-    console.log('currentStep', currentStep)
+
     //step1 - step 4, take int 1 - 4
     let circles = []
     for (let i = 0; i < 4; i++) {
-        console.log(i)
+
         if (i === currentStep - 1) {
             circles.push(
-                <div className={`${classes.step} ${classes.selected}`} id={`${i}`}></div>
+                <div key={i} className={`${classes.step} ${classes.selected}`} id={`${i}`}></div>
             )
         } else if (i < currentStep - 1){
             circles.push(
-                <div className={`${classes.step} ${classes.completed}`} id={`${i}`}>
+                <div key={i} className={`${classes.step} ${classes.completed}`} id={`${i}`}>
                     <span id={classes.checkMark}>&#10003;</span>
                 </div>
             )
         } else {
             circles.push(
-                <div className={classes.step} id={`${i}`}></div>
+                <div key={i} className={classes.step} id={`${i}`}></div>
             )
         }
     }
 
     const progression = `${((currentStep - 1) * 32)}%`
-    console.log(progression)
 
     const quote = (
         <div id={classes[`quote${currentStep}`]}>{quotes[currentStep - 1]}</div>

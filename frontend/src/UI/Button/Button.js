@@ -11,7 +11,8 @@ const button = (props) => {
                 "backgroundColor": props.backgroundColor,
                 "color": props.color,
                 "border": props.border,
-                "width": props.width
+                "width": props.width,
+                "fontSize": props.fontSize
             }}> 
             {props.children}
         </button>

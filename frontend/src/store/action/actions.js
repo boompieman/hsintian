@@ -73,3 +73,11 @@ export const fetchTime = (isFetching) => {
         isFetching: isFetching
     }
 }
+
+//latest
+export const setSelectedDate = (selectedDate) => {
+    return {
+        type: actionTypes.SET_SELECTED_DATE,
+        selectedDate: selectedDate
+    }
+}

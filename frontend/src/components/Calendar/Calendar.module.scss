@@ -21,6 +21,10 @@
     width: 30px;
     line-height: 30px;
     box-sizing: border-box;
+
+    &.Unselectable {
+        color: rgb(187, 187, 187);
+    }
 }
 
 .Day.current {
@@ -33,4 +37,8 @@
 .Day.Selectable {
     color: black;
     cursor: pointer;
+}
+
+.Day.LastMonth {
+    
 }
